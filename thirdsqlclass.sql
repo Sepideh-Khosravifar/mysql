@@ -4,8 +4,7 @@ select * from person where city = 'new york' and age = 23 and gender='F';
 select * from person order by empid asc;
 select * from person order by empid desc, lastname;
 select * from person where firstname='sara' or age=23 or empid=120;
-select * from person where firstname='sara' or firstname='gul ' or firstname 
-='alec';
+select * from person where firstname='sara' or firstname='gul ' or firstname='alec';
 select * from person where firstname in ('sara','gul', 'alec');
 select * from person where age>=23 and age<=28;
 select * from person where age>23 and age<28;
@@ -59,10 +58,12 @@ select * from hs_hr_employees where job_title_code in (29,10,31);
 select * from hs_hr_employees where job_title_code in
 (select id from ohrm_job_title where job_title in ('Developer','Freelancer'));
 select id from ohrm_job_title where job_title in ('Developer','Freelancer');
+
 select * from person;
 select * from employee;
+
 select firstname,lastname,salary from employee,person
- where employee.empid=person.empId;
+where employee.empid=person.empId;
  
 #fetch the first name last name and department of each employee
 
@@ -77,21 +78,26 @@ where employee.empid=person.empId;
 # Best approach using where
 
 select p.firstname,p.lastname,e.department 
-from employee  e,person  p
+from employee e,person p
 where e.empid=p.empId;
 
 # inner join 
 
 select p.firstname,p.lastname, e.department from employee 
 as e inner join person as p on p.empId=e.empId;
+
 select p.firstname,p.lastname, e.department from employee 
 as e  join person as p on p.empId=e.empId;
+
 select p.firstname,p.lastname, e.department from 
 employee as e left join person as p on p.empId=e.empId;
+
 select p.firstname,p.lastname, e.department from 
 person as p left join  employee as e on p.empId=e.empId;
+
 select p.firstname,p.lastname, e.department from 
 person as p right join  employee as e on p.empId=e.empId;
+
 select * from person as p,person m;
 select p.firstname emp_name, m.firstname manager_name
 from person as p, person as m where p.managerid=m.id;
